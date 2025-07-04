@@ -1,0 +1,24 @@
+GitHub Pages Deployment Instructions
+=====================================
+
+After creating your GitHub repository, run these commands:
+
+1. Add the remote repository:
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+
+2. Push your code to GitHub:
+git branch -M main
+git push -u origin main
+
+3. Enable GitHub Pages:
+- Go to your repository on GitHub
+- Click on "Settings" tab
+- Scroll down to "Pages" section
+- Under "Source", select "Deploy from a branch"
+- Select "main" branch and "/ (root)" folder
+- Click "Save"
+
+4. Your site will be available at:
+https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/
+
+Note: It may take a few minutes for the site to become available after enabling GitHub Pages.
