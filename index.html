@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hướng Dẫn Thuế TNCN 2025</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #007bff;
+            --background-color: #f4f7f9;
+            --card-background: #ffffff;
+            --text-color: #333;
+            --heading-color: #003d7c;
+            --light-gray: #e9ecef;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 0 0 15px 15px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        #logo {
+            max-height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .summary-item {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .summary-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .calculator-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .calculator-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .calculator-form input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        #result h3 {
+            margin-top: 0;
+            color: var(--heading-color);
+        }
+
+        #tax-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--danger-color);
+        }
+
+        #tax-amount.no-tax {
+            color: var(--success-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .accordion {
+            margin-bottom: 15px;
+        }
+
+        .accordion-header {
+            background-color: var(--light-gray);
+            color: var(--heading-color);
+            cursor: pointer;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .accordion-header:hover,
+        .accordion-header.active {
+            background-color: #d8e2e9;
+        }
+
+        .accordion-content {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border: 1px solid var(--light-gray);
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .accordion-content p,
+        .accordion-content ul {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: var(--heading-color);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="https://res.cloudinary.com/dzyeanw6v/image/upload/v1729671940/tayduong-logo.jpg" alt="Logo" id="logo">
+        <h1>Hướng Dẫn Thuế Thu Nhập Cá Nhân (TNCN) 2025</h1>
+        <p>Tổng hợp chi tiết, dễ hiểu và công cụ tính thuế nhanh</p>
+    </header>
+
+    <div class="container">
+        <!-- Key Summary -->
+        <div class="card">
+            <h2>Những Điểm Chính Cần Nhớ</h2>
+            <div class="grid">
+                <div class="summary-item">
+                    <strong>Giảm trừ gia cảnh</strong>
+                    <span>Bản thân: <strong>11 triệu</strong> VNĐ/tháng<br>Người phụ thuộc: <strong>4.4 triệu</strong>
+                        VNĐ/tháng</span>
+                </div>
+                <div class="summary-item">
+                    <strong>Ngưỡng nộp thuế</strong>
+                    <span>Thu nhập trên 11 triệu/tháng (nếu không có người phụ thuộc và đóng bảo hiểm) bắt đầu phải nộp
+                        thuế.</span>
+                </div>
+                <div class="summary-item">
+                    <strong>Hạn Quyết Toán Thuế</strong>
+                    <span>Ủy quyền: <strong>31/03/2025</strong><br>Tự quyết toán: <strong>05/05/2025</strong></span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Detailed Concepts -->
+        <div class="card">
+            <h2>Các Khái Niệm Quan Trọng</h2>
+            <div class="accordion">
+                <button class="accordion-header">Công thức xác định Thu Nhập Tính Thuế</button>
+                <div class="accordion-content">
+                    <p><strong>Thu nhập tính thuế</strong> là phần thu nhập cuối cùng dùng để nhân với thuế suất, được
+                        tính bằng cách lấy Thu nhập chịu thuế trừ đi các khoản giảm trừ.</p>
+                    <p style="background-color: #eef; padding: 10px; border-radius: 5px;">
+                        <code>Thu nhập tính thuế = Thu nhập chịu thuế - (Giảm trừ gia cảnh + Bảo hiểm bắt buộc + Đóng góp từ thiện)</code>
+                    </p>
+                    <ul>
+                        <li><strong>Thu nhập chịu thuế:</strong> Là tổng tiền lương, tiền công và các khoản thu nhập
+                            tương đương mà bạn nhận được, sau khi đã trừ đi các khoản được miễn thuế (như tiền ăn trưa,
+                            phụ cấp độc hại, tiền làm thêm giờ được trả cao hơn...).</li>
+                        <li><strong>Các khoản giảm trừ:</strong>
+                            <ul>
+                                <li><strong>Giảm trừ gia cảnh:</strong> 11 triệu VNĐ cho bản thân và 4.4 triệu VNĐ cho
+                                    mỗi người phụ thuộc.</li>
+                                <li><strong>Bảo hiểm bắt buộc:</strong> Gồm BHXH, BHYT, BHTN theo tỷ lệ quy định.</li>
+                                <li><strong>Các khoản đóng góp từ thiện, nhân đạo, khuyến học:</strong> Các khoản đóng
+                                    góp vào các quỹ được nhà nước công nhận.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion">
+                <button class="accordion-header">Điều Kiện Đăng Ký Người Phụ Thuộc</button>
+                <div class="accordion-content">
+                    <p>Để được giảm trừ, người phụ thuộc phải đáp ứng các điều kiện sau:</p>
+                    <ul>
+                        <li><strong>1. Con cái (con đẻ, con nuôi, con riêng):</strong>
+                            <ul>
+                                <li>Dưới 18 tuổi.</li>
+                                <li>Từ 18 tuổi trở lên nhưng bị khuyết tật, không có khả năng lao động.</li>
+                                <li>Đang theo học đại học, cao đẳng, trung cấp... và có thu nhập bình quân tháng không
+                                    quá 1.000.000 VNĐ.</li>
+                            </ul>
+                        </li>
+                        <li><strong>2. Vợ hoặc chồng:</strong>
+                            <ul>
+                                <li>Trong độ tuổi lao động: Phải bị khuyết tật, không có khả năng lao động và không có
+                                    thu nhập hoặc thu nhập bình quân tháng không quá 1.000.000 VNĐ.</li>
+                                <li>Ngoài độ tuổi lao động: Phải không có thu nhập hoặc có thu nhập bình quân tháng
+                                    không quá 1.000.000 VNĐ.</li>
+                            </ul>
+                        </li>
+                        <li><strong>3. Cha mẹ (cha mẹ đẻ, cha mẹ vợ/chồng, cha dượng, mẹ kế, cha mẹ nuôi):</strong>
+                            <ul>
+                                <li>Trong độ tuổi lao động: Phải bị khuyết tật, không có khả năng lao động và không có
+                                    thu nhập hoặc thu nhập bình quân tháng không quá 1.000.000 VNĐ.</li>
+                                <li>Ngoài độ tuổi lao động: Phải không có thu nhập hoặc có thu nhập bình quân tháng
+                                    không quá 1.000.000 VNĐ.</li>
+                            </ul>
+                        </li>
+                        <li><strong>4. Các cá nhân khác không nơi nương tựa mà người nộp thuế trực tiếp nuôi
+                                dưỡng:</strong> (Anh, chị, em ruột; ông, bà nội/ngoại; cô, dì, chú, cậu, bác ruột; cháu
+                            ruột) phải đáp ứng điều kiện của cha mẹ.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tax Calculator -->
+        <div class="card">
+            <h2>Công Cụ Tính Thuế TNCN Nhanh</h2>
+            <div class="grid" style="align-items: flex-start;">
+                <form id="tax-calculator" class="calculator-form">
+                    <div class="form-group">
+                        <label for="gross-income">Tổng thu nhập tháng (VNĐ)</label>
+                        <input type="text" id="gross-income" placeholder="Ví dụ: 25.000.000" required
+                            inputmode="numeric">
+                    </div>
+                    <div class="form-group">
+                        <label for="dependents">Số người phụ thuộc</label>
+                        <input type="number" id="dependents" value="0" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="insurance">Bảo hiểm bắt buộc & Quỹ hưu trí (VNĐ)</label>
+                        <input type="text" id="insurance" value="0" placeholder="Nếu có" inputmode="numeric">
+                    </div>
+                    <button type="submit" class="btn">Tính Thuế</button>
+                </form>
+                <div id="result">
+                    <h3>Số thuế TNCN phải nộp/tháng</h3>
+                    <p id="tax-amount">0 VNĐ</p>
+                    <small>Kết quả chỉ mang tính tham khảo.</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Calculate -->
+        <div class="card">
+            <h2>Cách Tính Thuế TNCN (HĐLĐ > 3 tháng)</h2>
+            <p>Thuế TNCN được tính theo công thức lũy tiến từng phần. Dưới đây là các bước và biểu thuế chi tiết.</p>
+
+            <div class="accordion">
+                <button class="accordion-header">Công Thức Tính Thuế</button>
+                <div class="accordion-content">
+                    <p><strong>Bước 1: Tính Thu nhập chịu thuế</strong><br>
+                        Thu nhập chịu thuế = Tổng thu nhập - Các khoản được miễn thuế</p>
+                    <p><strong>Bước 2: Tính Thu nhập tính thuế</strong><br>
+                        Thu nhập tính thuế = Thu nhập chịu thuế - Giảm trừ gia cảnh - Bảo hiểm bắt buộc - Đóng góp từ
+                        thiện</p>
+                    <p><strong>Bước 3: Tính Thuế phải nộp</strong><br>
+                        Thuế TNCN = Thu nhập tính thuế x Thuế suất (theo biểu lũy tiến)</p>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Bậc</th>
+                        <th>Thu nhập tính thuế/tháng (triệu VNĐ)</th>
+                        <th>Thuế suất</th>
+                        <th>Tính số thuế phải nộp (Cách 1)</th>
+                        <th>Cách tính rút gọn (Cách 2)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Đến 5</td>
+                        <td>5%</td>
+                        <td>0 trđ + 5% TNTT</td>
+                        <td>5% TNTT</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Trên 5 đến 10</td>
+                        <td>10%</td>
+                        <td>0.25 trđ + 10% TNTT trên 5 trđ</td>
+                        <td>10% TNTT - 0.25 trđ</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Trên 10 đến 18</td>
+                        <td>15%</td>
+                        <td>0.75 trđ + 15% TNTT trên 10 trđ</td>
+                        <td>15% TNTT - 0.75 trđ</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Trên 18 đến 32</td>
+                        <td>20%</td>
+                        <td>1.95 trđ + 20% TNTT trên 18 trđ</td>
+                        <td>20% TNTT - 1.65 trđ</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Trên 32 đến 52</td>
+                        <td>25%</td>
+                        <td>4.75 trđ + 25% TNTT trên 32 trđ</td>
+                        <td>25% TNTT - 3.25 trđ</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Trên 52 đến 80</td>
+                        <td>30%</td>
+                        <td>9.75 trđ + 30% TNTT trên 52 trđ</td>
+                        <td>30% TNTT - 5.85 trđ</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Trên 80</td>
+                        <td>35%</td>
+                        <td>18.15 trđ + 35% TNTT trên 80 trđ</td>
+                        <td>35% TNTT - 9.85 trđ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Other Cases -->
+        <div class="card">
+            <h2>Các Trường Hợp Khác</h2>
+            <div class="accordion">
+                <button class="accordion-header">Cá nhân không ký HĐLĐ hoặc HĐLĐ dưới 3 tháng</button>
+                <div class="accordion-content">
+                    <p>Nếu tổng mức trả thu nhập từ <strong>2.000.000 VNĐ/lần</strong> trở lên, tổ chức trả thu nhập sẽ
+                        khấu trừ <strong>10% thuế TNCN</strong> trước khi trả tiền.</p>
+                    <p>Cá nhân có thể làm cam kết 08/CK-TNCN để tạm thời không bị khấu trừ nếu đủ điều kiện.</p>
+                </div>
+            </div>
+            <div class="accordion">
+                <button class="accordion-header">Cá nhân không cư trú</button>
+                <div class="accordion-content">
+                    <p>Áp dụng thuế suất cố định <strong>20%</strong> trên tổng thu nhập chịu thuế. Không được áp dụng
+                        giảm trừ gia cảnh.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Thông tin được tổng hợp dựa trên Hướng dẫn thuế TNCN 2025. Luôn đối chiếu với các văn bản pháp luật hiện
+            hành.</p>
+    </footer>
+
+    <script>
+        // Helper function to format numbers with thousand separators
+        function formatNumberInput(inputElement) {
+            inputElement.addEventListener('input', function (e) {
+                let value = e.target.value.replace(/\./g, '');
+                if (!isNaN(value) && value.length > 0) {
+                    const number = parseInt(value, 10);
+                    e.target.value = number.toLocaleString('vi-VN');
+                } else if (value === '') {
+                    e.target.value = '';
+                }
+            });
+        }
+
+        // Apply formatting to the currency inputs
+        const grossIncomeInput = document.getElementById('gross-income');
+        const insuranceInput = document.getElementById('insurance');
+        formatNumberInput(grossIncomeInput);
+        formatNumberInput(insuranceInput);
+
+        // Accordion logic
+        const accordions = document.querySelectorAll('.accordion-header');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', () => {
+                acc.classList.toggle('active');
+                const content = acc.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                }
+            });
+        });
+
+        // Tax calculator logic
+        document.getElementById('tax-calculator').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Parse formatted numbers by removing dots
+            const grossIncome = parseFloat(document.getElementById('gross-income').value.replace(/\./g, '')) || 0;
+            const dependents = parseInt(document.getElementById('dependents').value) || 0;
+            const insurance = parseFloat(document.getElementById('insurance').value.replace(/\./g, '')) || 0;
+
+            const selfDeduction = 11000000;
+            const dependentDeduction = 4400000;
+
+            // Assume gross income is taxable income for simplicity in this calculator
+            // A more complex calculator would ask for tax-exempt incomes
+            const taxableIncome = grossIncome;
+
+            const totalDeductions = selfDeduction + (dependents * dependentDeduction) + insurance;
+
+            let incomeForTaxCalc = taxableIncome - totalDeductions;
+
+            if (incomeForTaxCalc <= 0) {
+                incomeForTaxCalc = 0;
+            }
+
+            let taxPayable = 0;
+
+            if (incomeForTaxCalc > 80000000) {
+                taxPayable = incomeForTaxCalc * 0.35 - 9850000;
+            } else if (incomeForTaxCalc > 52000000) {
+                taxPayable = incomeForTaxCalc * 0.30 - 5850000;
+            } else if (incomeForTaxCalc > 32000000) {
+                taxPayable = incomeForTaxCalc * 0.25 - 3250000;
+            } else if (incomeForTaxCalc > 18000000) {
+                taxPayable = incomeForTaxCalc * 0.20 - 1650000;
+            } else if (incomeForTaxCalc > 10000000) {
+                taxPayable = incomeForTaxCalc * 0.15 - 750000;
+            } else if (incomeForTaxCalc > 5000000) {
+                taxPayable = incomeForTaxCalc * 0.10 - 250000;
+            } else if (incomeForTaxCalc > 0) {
+                taxPayable = incomeForTaxCalc * 0.05;
+            }
+
+            const taxAmountEl = document.getElementById('tax-amount');
+            if (taxPayable <= 0) {
+                taxAmountEl.textContent = '0 VNĐ';
+                taxAmountEl.classList.add('no-tax');
+            } else {
+                taxAmountEl.textContent = `${Math.round(taxPayable).toLocaleString('vi-VN')} VNĐ`;
+                taxAmountEl.classList.remove('no-tax');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
