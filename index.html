@@ -32,31 +32,33 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
         }
 
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 30px 15px;
             border-radius: 0 0 15px 15px;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1rem;
             margin-top: 10px;
+            line-height: 1.4;
         }
 
         #logo {
-            max-height: 80px;
-            margin-bottom: 20px;
+            max-height: 60px;
+            margin-bottom: 15px;
         }
 
         .card {
@@ -83,8 +85,8 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .summary-item {
@@ -163,22 +165,30 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            font-size: 0.9rem;
         }
 
         th,
         td {
-            padding: 12px;
+            padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
+            word-wrap: break-word;
         }
 
         th {
             background-color: var(--primary-color);
             color: white;
+            font-size: 0.8rem;
         }
 
         tbody tr:nth-child(even) {
             background-color: #f9f9f9;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
         }
 
         .accordion {
@@ -224,10 +234,110 @@
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 20px 15px;
             margin-top: 30px;
             background-color: var(--heading-color);
             color: white;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 20px 10px;
+                border-radius: 0;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+
+            .card h2 {
+                font-size: 1.4rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .summary-item {
+                padding: 12px;
+            }
+
+            .calculator-form input {
+                padding: 12px;
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            .btn {
+                padding: 14px 20px;
+                font-size: 1rem;
+            }
+
+            #result {
+                margin-top: 15px;
+                padding: 15px;
+            }
+
+            #tax-amount {
+                font-size: 1.5rem;
+            }
+
+            table {
+                font-size: 0.75rem;
+            }
+
+            th, td {
+                padding: 6px 4px;
+            }
+
+            .accordion-header {
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            .accordion-content {
+                padding: 0 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.3rem;
+            }
+
+            .card {
+                padding: 12px;
+            }
+
+            .card h2 {
+                font-size: 1.2rem;
+            }
+
+            table {
+                font-size: 0.7rem;
+            }
+
+            th, td {
+                padding: 4px 2px;
+            }
+
+            .summary-item strong {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -373,68 +483,70 @@
                 </div>
             </div>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Bậc</th>
-                        <th>Thu nhập tính thuế/tháng (triệu VNĐ)</th>
-                        <th>Thuế suất</th>
-                        <th>Tính số thuế phải nộp (Cách 1)</th>
-                        <th>Cách tính rút gọn (Cách 2)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Đến 5</td>
-                        <td>5%</td>
-                        <td>0 trđ + 5% TNTT</td>
-                        <td>5% TNTT</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Trên 5 đến 10</td>
-                        <td>10%</td>
-                        <td>0.25 trđ + 10% TNTT trên 5 trđ</td>
-                        <td>10% TNTT - 0.25 trđ</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Trên 10 đến 18</td>
-                        <td>15%</td>
-                        <td>0.75 trđ + 15% TNTT trên 10 trđ</td>
-                        <td>15% TNTT - 0.75 trđ</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Trên 18 đến 32</td>
-                        <td>20%</td>
-                        <td>1.95 trđ + 20% TNTT trên 18 trđ</td>
-                        <td>20% TNTT - 1.65 trđ</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Trên 32 đến 52</td>
-                        <td>25%</td>
-                        <td>4.75 trđ + 25% TNTT trên 32 trđ</td>
-                        <td>25% TNTT - 3.25 trđ</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Trên 52 đến 80</td>
-                        <td>30%</td>
-                        <td>9.75 trđ + 30% TNTT trên 52 trđ</td>
-                        <td>30% TNTT - 5.85 trđ</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Trên 80</td>
-                        <td>35%</td>
-                        <td>18.15 trđ + 35% TNTT trên 80 trđ</td>
-                        <td>35% TNTT - 9.85 trđ</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bậc</th>
+                            <th>Thu nhập tính thuế/tháng (triệu VNĐ)</th>
+                            <th>Thuế suất</th>
+                            <th>Tính số thuế phải nộp (Cách 1)</th>
+                            <th>Cách tính rút gọn (Cách 2)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Đến 5</td>
+                            <td>5%</td>
+                            <td>0 trđ + 5% TNTT</td>
+                            <td>5% TNTT</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Trên 5 đến 10</td>
+                            <td>10%</td>
+                            <td>0.25 trđ + 10% TNTT trên 5 trđ</td>
+                            <td>10% TNTT - 0.25 trđ</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Trên 10 đến 18</td>
+                            <td>15%</td>
+                            <td>0.75 trđ + 15% TNTT trên 10 trđ</td>
+                            <td>15% TNTT - 0.75 trđ</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Trên 18 đến 32</td>
+                            <td>20%</td>
+                            <td>1.95 trđ + 20% TNTT trên 18 trđ</td>
+                            <td>20% TNTT - 1.65 trđ</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Trên 32 đến 52</td>
+                            <td>25%</td>
+                            <td>4.75 trđ + 25% TNTT trên 32 trđ</td>
+                            <td>25% TNTT - 3.25 trđ</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Trên 52 đến 80</td>
+                            <td>30%</td>
+                            <td>9.75 trđ + 30% TNTT trên 52 trđ</td>
+                            <td>30% TNTT - 5.85 trđ</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Trên 80</td>
+                            <td>35%</td>
+                            <td>18.15 trđ + 35% TNTT trên 80 trđ</td>
+                            <td>35% TNTT - 9.85 trđ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <!-- Other Cases -->
